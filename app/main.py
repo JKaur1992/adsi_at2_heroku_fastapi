@@ -5,7 +5,7 @@ import pandas as pd
 
 app = FastAPI()
 
-mlr_model = load('../models/mlr_scaled_6predictorsONLY_labelencoded.joblib')
+mlr_model = load('../models/mlr_scaled_imbalanced_BEST.joblib')
 
 @app.get("/")
 def read_root():
