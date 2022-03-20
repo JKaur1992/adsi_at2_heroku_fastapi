@@ -27,7 +27,7 @@ def format_features(name: str, aroma: float, appearance: float, palate: float, t
     
 @app.get("/beer/type/prediction")
 def predict(name: str, aroma: float, appearance: float, palate: float, taste: float, volume: float):
-    features = format_features(aroma, appearance, palate, taste, volume)
+    features = format_features(name, aroma, appearance, palate, taste, volume)
     variables = pd.DataFrame(features)
     pred = model.predict(variables)
     return JSONResponse(pred.tolist())
