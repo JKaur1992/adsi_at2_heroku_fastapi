@@ -5,7 +5,7 @@ import pandas as pd
 
 app = FastAPI()
 
-mlr_model = load('../models/mlr_scaled_imbalanced_BEST.joblib')
+model = load('../models/mlr_scaled_APIpredictorsONLY.joblib')
 
 @app.get("/")
 def read_root():
@@ -29,6 +29,6 @@ def format_features(name: str, aroma: int, appearance: int, palate: int, taste: 
 def predict(name: str, aroma: int, appearance: int, palate: int, taste: int, volume: int):
     features = format_features(name, aroma, appearance, palate, taste, volume)
     variables = pd.DataFrame(features)
-    pred = mlr_model.predict(variables)
+    pred = model.predict(variables)
     return JSONResponse(pred.tolist())
 
