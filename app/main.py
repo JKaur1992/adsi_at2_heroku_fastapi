@@ -15,7 +15,7 @@ def read_root():
 def healthcheck():
     return 'Multinomial Logistic Regression Model is all ready to go!'
 
-def format_features(name: str, aroma: int, appearance: int, palate: int, taste: int, volume: int):
+def format_features(name: str, aroma: float, appearance: float, palate: float, taste: float, volume: float):
     return {
         'brewery_name': [name],
         'review_aroma': [aroma],
@@ -26,7 +26,7 @@ def format_features(name: str, aroma: int, appearance: int, palate: int, taste: 
     }
     
 @app.get("/beer/type/prediction")
-def predict(name: str, aroma: int, appearance: int, palate: int, taste: int, volume: int):
+def predict(name: str, aroma: float, appearance: float, palate: float, taste: float, volume: float):
     features = format_features(name, aroma, appearance, palate, taste, volume)
     variables = pd.DataFrame(features)
     pred = model.predict(variables)
