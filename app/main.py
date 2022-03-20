@@ -5,7 +5,7 @@ import pandas as pd
 
 app = FastAPI()
 
-model = load('../models/mlr_scaled_6Pred_BothOrdinal_Pipeline.joblib')
+model = load('../models/mlr_scaled_6Pred_DropNA.joblib')
 
 @app.get("/")
 def read_root():
