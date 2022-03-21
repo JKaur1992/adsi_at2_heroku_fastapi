@@ -9,7 +9,7 @@ model = load('../models/mlr_scaled_6Pred_Binary-Label_Pipeline.joblib')
 
 @app.get("/")
 def read_root():
-    return 'ML Model for Predicting Beer Style based on user rating criterias (API Expected Parameters) such as Brewery Name AND Beer Appearance, Aroma, Palate, Taste and Volume. Endpoints = /health/beer/type/prediction. github repo link - https://github.com/JKaur1992/adsi_at2_heroku_fastapi'
+    return 'ML Model for Predicting Beer Style based on user rating criterias (API Expected Parameters) such as Brewery Name AND Beer Appearance, Aroma, Palate, Taste and Volume. Endpoints = /health/beer/type/multiple/predictors. github repo link - https://github.com/JKaur1992/adsi_at2_heroku_fastapi'
 
 @app.get('/health', status_code=200)
 def healthcheck():
@@ -25,7 +25,7 @@ def format_features(name: str, aroma: float, appearance: float, palate: float, t
         'beer_abv': [volume]
     }
     
-@app.get("/beer/type/prediction")
+@app.get("/beer/type/multiple/predictors")
 def predict(name: str, aroma: float, appearance: float, palate: float, taste: float, volume: float):
     features = format_features(name, aroma, appearance, palate, taste, volume)
     variables = pd.DataFrame(features)
