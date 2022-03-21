@@ -5,11 +5,11 @@ import pandas as pd
 
 app = FastAPI()
 
-model = load('../models/mlr_scaled_6Pred_Binary-Label_Pipeline.joblib')
+model = load('../models/mlr_scaled_6Pred_Ordinal-Label_Pipeline.joblib')
 
 @app.get("/")
 def read_root():
-    return 'ML Model for Predicting Beer Style based on user rating criterias (API Expected Parameters) such as name, appearance, aroma, palate, taste and volume. Endpoints = /health/beer/type/prediction'
+    return 'ML Model for Predicting Beer Style based on user rating criterias (API Expected Parameters) such as Brewery Name AND Beer Appearance, Aroma, Palate, Taste and Volume. Endpoints = /health/beer/type/prediction. github repo link - https://github.com/JKaur1992/adsi_at2_heroku_fastapi'
 
 @app.get('/health', status_code=200)
 def healthcheck():
