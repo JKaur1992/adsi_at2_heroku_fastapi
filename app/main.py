@@ -15,8 +15,15 @@ def read_root():
 def healthcheck():
     return 'Multinomial Logistic Regression Model is all ready to go!'
 
-def format_feature(name: str):
-    return {'brewery_name': [name]}
+def format_feature(name: str, aroma: float, appearance: float, palate: float, taste: float, volume: float):
+    return {
+        'brewery_name': [name],
+        'review_aroma': [aroma],
+        'review_appearance': [appearance],
+        'review_palate': [palate],
+        'review_taste': [taste],
+        'beer_abv': [volume]
+    }
 
 @app.get("/beer/type/single/predictor")
 def predict(name: str):
